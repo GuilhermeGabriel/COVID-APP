@@ -13,25 +13,25 @@
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="net.yan.covid.ui.cuidados.GalleryFragment"
+        android:name="net.yan.covid.ui.cuidados.CuidadosFragment"
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_cuidados" />
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="net.yan.covid.ui.noticias.SlideshowFragment"
+        android:name="net.yan.covid.ui.noticias.NoticiaFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_noticias" />
 
     <fragment
         android:id="@+id/nav_tools"
-        android:name="net.yan.covid.ui.contatos.ToolsFragment"
+        android:name="net.yan.covid.ui.contatos.ContatosFragment"
         android:label="@string/menu_tools"
         tools:layout="@layout/fragment_contato" />
 
     <fragment
         android:id="@+id/nav_share"
-        android:name="net.yan.covid.ui.sobre.ShareFragment"
+        android:name="net.yan.covid.ui.sobre.SobreFragment"
         android:label="@string/menu_share"
         tools:layout="@layout/fragment_sobre" />
 

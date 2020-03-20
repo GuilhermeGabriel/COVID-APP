@@ -1,29 +1,27 @@
-package net.yan.covid.ui.sobre;
+package net.yan.covid.ui.cuidados;
 
 import android.os.Bundle;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import net.yan.covid.R;
 
-public class ShareFragment extends Fragment {
-
-    private String descricao = "App criado com base nos dados fornecidos pela Microsoft sobre os casos de corona vírus no mundo.";
-    private String email = "yancamilo8@gmail.com";
+public class CuidadosFragment extends Fragment {
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_sobre, container, false);
+
+        View root = inflater.inflate(R.layout.fragment_cuidados, container, false);
 
         return root;
     }
-
-
 }

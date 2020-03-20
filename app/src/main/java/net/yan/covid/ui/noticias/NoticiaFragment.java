@@ -1,4 +1,4 @@
-package net.yan.covid.ui.cuidados;
+package net.yan.covid.ui.noticias;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,13 +14,14 @@ import androidx.lifecycle.ViewModelProviders;
 
 import net.yan.covid.R;
 
-public class GalleryFragment extends Fragment {
+import static androidx.lifecycle.ViewModelProviders.*;
 
+public class NoticiaFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_cuidados, container, false);
+        View root = inflater.inflate(R.layout.fragment_noticias, container, false);
 
         return root;
     }

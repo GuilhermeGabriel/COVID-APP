@@ -1,4 +1,4 @@
-package net.yan.covid.ui.noticias;
+package net.yan.covid.ui.contatos;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,14 +14,12 @@ import androidx.lifecycle.ViewModelProviders;
 
 import net.yan.covid.R;
 
-import static androidx.lifecycle.ViewModelProviders.*;
-
-public class SlideshowFragment extends Fragment {
+public class ContatosFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_noticias, container, false);
+        View root = inflater.inflate(R.layout.fragment_contato, container, false);
 
         return root;
     }

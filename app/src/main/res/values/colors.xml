@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#000000</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#000000</color>
+    <color name="about_background_color">#000</color>
+    <color name="about_description_text_color">#fff</color>
+    <color name="about_facebook_color">#fff</color>
+    <color name="about_github_color">#fff</color>
+    <color name="about_instagram_color">#fff</color>
+    <color name="about_item_icon_color">#fff</color>
+    <color name="about_item_text_color">#fff</color>
+    <color name="about_play_store_color">#fff</color>
+    <color name="about_separator_color">#fff</color>
+    <color name="about_text_color">#fff</color>
+</resources>

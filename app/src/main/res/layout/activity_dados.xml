@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#090808"
+        android:orientation="vertical"
+        tools:context=".activity.Dados"
+        android:paddingBottom="30dp">
+
+        <TextView
+            android:id="@+id/pais_d"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text=""
+            android:textColor="#fff"
+            android:textSize="40sp" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/casos_d"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="Casos Registrados: "
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tcases_d"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="Casos Registrados Hoje: "
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/deaths_d"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="Mortes Registradas: "
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tdeaths_d"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="Mortes Registradas Hoje: "
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/recovered_d"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="Pacientes recuperados: "
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/critical_d"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="Pacientes em estado Crítico: "
+            android:textColor="#fff"
+            android:textSize="20sp" />
+ <TextView
+            android:id="@+id/atives_d"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="Casos ativos: "
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/pMilion_d"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="Casos a cada 1 milhão de pessoas: "
+            android:textColor="#fff"
+            android:textSize="19sp" />
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="2dp"
+        android:background="#110808"
+        android:paddingRight="2dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/pais"
+            android:layout_width="match_parent"
+            android:textColor="#FFF"
+            android:layout_height="match_parent"
+            android:text="TextView"
+            android:paddingLeft="7dp"
+            android:gravity="center_vertical"
+            android:layout_weight="1"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/casos"
+            android:textColor="#EE3333"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Casos: "
+            android:gravity="left|center_vertical"
+            android:layout_weight="1"
+            android:paddingLeft="7dp"
+            android:textSize="20sp"
+            />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

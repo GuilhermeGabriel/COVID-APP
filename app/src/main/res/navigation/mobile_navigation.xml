@@ -17,17 +17,6 @@
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_cuidados" />
 
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="net.yan.covid.ui.noticias.NoticiaFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_noticias" />
-
-    <fragment
-        android:id="@+id/nav_tools"
-        android:name="net.yan.covid.ui.contatos.ContatosFragment"
-        android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_contato" />
 
     <fragment
         android:id="@+id/nav_share"
@@ -35,9 +24,5 @@
         android:label="@string/menu_share"
         tools:layout="@layout/fragment_sobre" />
 
-    <fragment
-        android:id="@+id/nav_send"
-        android:name="net.yan.covid.ui.enviar.SendFragment"
-        android:label="@string/menu_send"
-        tools:layout="@layout/fragment_enviar" />
+
 </navigation>

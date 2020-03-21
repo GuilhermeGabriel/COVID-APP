@@ -70,9 +70,11 @@ public class SobreFragment extends Fragment {
     }
 
 
+    @Override
+    public void onStart() {
 
-
-
+        super.onStart();
+    }
 
     public void enviarEmail() {
         //String endereco = "https://www.facebook.com/yan.camilo.925";

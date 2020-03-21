@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import android.text.SpannableString;
 import android.text.style.TextAppearanceSpan;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -36,6 +37,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -55,8 +58,8 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private List<Covid> lista = new ArrayList<>();
     private AppBarConfiguration mAppBarConfiguration;
-    public  MenuItem item;
-
+    public MenuItem item;
+    public boolean valor;
 
 
     @Override
@@ -66,12 +69,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, AnimaActivity.class));
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-
         Menu menu = navigationView.getMenu();
+        //Item separam aba lateral
         MenuItem tools = menu.findItem(R.id.com);
         SpannableString s = new SpannableString(tools.getTitle());
         s.setSpan(new TextAppearanceSpan(this, R.style.TextAppearance44), 0, s.length(), 0);
@@ -83,16 +84,21 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
     }
 
     public void updateApi(Update listener) {
         update = listener;
+
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         item = menu.findItem(R.id.search);
         searchView = (SearchView) item.getActionView();
@@ -105,14 +111,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String newText) {
                 update.updatefrag(newText);
-                //getSupportFragmentManager().beginTransaction().attach().commit()
                 return false;
             }
         });
-        item.setChecked(true);
-
         return true;
-
     }
 
 
@@ -122,7 +124,5 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-
-
 
 }

@@ -1,11 +1,15 @@
 package net.yan.covid.ui.home;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -16,6 +20,7 @@ import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.airbnb.lottie.L;
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -48,7 +53,6 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
 
-
     private Button botao;
     private TextView texto;
     private Covid covid;
@@ -59,14 +63,11 @@ public class HomeFragment extends Fragment {
     private Adapter adapter;
 
 
-
-
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_pais, container, false);
 
-        ((MainActivity)getActivity()).updateApi(new Update() {
+        ((MainActivity) getActivity()).updateApi(new Update() {
             @Override
             public void updatefrag(String text) {
                 adapter.getFilter().filter(text);
@@ -104,7 +105,10 @@ public class HomeFragment extends Fragment {
     }
 
 
-
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
 
     class MyTask extends AsyncTask<Void, Void, Void> {
 
@@ -154,30 +158,53 @@ public class HomeFragment extends Fragment {
                                 Log.d("AA", covid.getCoutry());
                                 lista.add(covid);
                             }
+                            if (lista.size() == 0) {
+                                alerta("Dados", "Dados em processo de alteração, volte mais tarde.");
+                            }
                             configRec();
                         } catch (JSONException e) {
-                            AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
-                            alert.setCancelable(true);
-                            alert.setTitle("Erro temporário");
-                            alert.setMessage("Dados em processo de alteração, volte mais tarde.");
-                            alert.create().show();
+                            alerta("Dados", "Dados em processo de alteração, volte mais tarde.");
                             Log.d("ERROR", e.getMessage());
                         }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
-                alert.setCancelable(true);
-                alert.setTitle("Erro temporário");
-                alert.setMessage("Dados em processo de alteração, volte mais tarde.");
-                alert.create().show();
+                NetworkResponse error_code = error.networkResponse;
 
+                if (error_code == null) {
+                    // Sem conexão a internet no aparelho
+                    alerta("Atenção", "Você precisa está conectado.");
+
+                } else {
+                    // Sem conexão ao servidor
+                        alerta("Servidos", "Servidor indisponível no momento, volte mais tarde.");
+                }
                 Log.d("ERROR", error.getMessage());
             }
         });
 
         queue.add(stringRequest);
+    }
+
+    public void alerta(String title, String mess) {
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
+        alert.setCancelable(true);
+        alert.setTitle(title);
+        alert.setMessage(mess);
+        alert.setPositiveButton("Fechar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                try {
+                    getActivity().finish();
+                } catch (Throwable throwable) {
+                    throwable.printStackTrace();
+                }
+            }
+        });
+        alert.create().show();
+
     }
 
     public void configRec() {
@@ -187,10 +214,9 @@ public class HomeFragment extends Fragment {
     }
 
     public void fil(String v) {
-         String f = v;
-         value = f;
+        String f = v;
+        value = f;
     }
-
 
 
     public void abrirSplash() {

@@ -10,7 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.airbnb.lottie.L;
 import com.android.volley.Request;
@@ -56,15 +59,21 @@ public class HomeFragment extends Fragment {
     private Adapter adapter;
 
 
+
+
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_pais, container, false);
+
         ((MainActivity)getActivity()).updateApi(new Update() {
             @Override
             public void updatefrag(String text) {
-               adapter.getFilter().filter(text);
+                adapter.getFilter().filter(text);
             }
         });
+
+
         MyTask myTask = new MyTask();
         myTask.execute();
         recyclerView = root.findViewById(R.id.recycler);
@@ -94,10 +103,7 @@ public class HomeFragment extends Fragment {
         return root;
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-    }
+
 
 
     class MyTask extends AsyncTask<Void, Void, Void> {

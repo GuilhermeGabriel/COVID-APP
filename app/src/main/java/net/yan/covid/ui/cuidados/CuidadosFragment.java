@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import net.yan.covid.R;
+import net.yan.covid.activity.MainActivity;
 
 public class CuidadosFragment extends Fragment {
 
@@ -22,6 +23,8 @@ public class CuidadosFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_cuidados, container, false);
 
+
         return root;
     }
+
 }

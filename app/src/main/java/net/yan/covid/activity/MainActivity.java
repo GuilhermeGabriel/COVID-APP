@@ -1,17 +1,22 @@
 package net.yan.covid.activity;
 
 
+import android.content.ClipData;
 import android.content.Intent;
 
 import android.os.Bundle;
 
+import android.text.SpannableString;
+import android.text.style.TextAppearanceSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import android.view.View;
 import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.google.android.material.navigation.NavigationView;
@@ -19,6 +24,7 @@ import com.google.android.material.navigation.NavigationView;
 import net.yan.covid.R;
 import net.yan.covid.model.Covid;
 
+import net.yan.covid.ui.home.HomeFragment;
 import net.yan.covid.ui.home.Update;
 
 
@@ -27,6 +33,7 @@ import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
@@ -39,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public Update update;
+    public SearchView searchView;
     private Adapter adp;
     private Fragment df;
     private Button botao;
@@ -47,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private List<Covid> lista = new ArrayList<>();
     private AppBarConfiguration mAppBarConfiguration;
+    public  MenuItem item;
+
 
 
     @Override
@@ -56,22 +66,18 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, AnimaActivity.class));
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        /**
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
+
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+
+        Menu menu = navigationView.getMenu();
+        MenuItem tools = menu.findItem(R.id.com);
+        SpannableString s = new SpannableString(tools.getTitle());
+        s.setSpan(new TextAppearanceSpan(this, R.style.TextAppearance44), 0, s.length(), 0);
+        tools.setTitle(s);
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_send)
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_share)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -84,13 +90,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-        MenuItem item = menu.findItem(R.id.search);
-        SearchView searchView = (SearchView) item.getActionView();
+        item = menu.findItem(R.id.search);
+        searchView = (SearchView) item.getActionView();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -104,9 +109,11 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-        return true;
-    }
+        item.setChecked(true);
 
+        return true;
+
+    }
 
 
     @Override
@@ -115,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
 
 
 }
